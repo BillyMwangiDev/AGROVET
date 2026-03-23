@@ -151,6 +151,7 @@ export default function AIBreeding() {
               src="/images/product_ai_cow.jpg"
               alt="AI Breeding Services"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             {/* Overlay with stats */}
             <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-6">

@@ -62,6 +62,7 @@ export default function Location() {
               src="/images/location_map.jpg"
               alt="Location Map"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             {/* Location Pin Overlay */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

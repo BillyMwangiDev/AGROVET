@@ -129,13 +129,33 @@ class MpesaTransactionSerializer(serializers.ModelSerializer):
 class AIRecordSerializer(serializers.ModelSerializer):
     semen_product_name = serializers.CharField(source="semen_product.name", read_only=True)
     semen_sire_code = serializers.CharField(source="semen_product.sire_code", read_only=True)
+    second_semen_product_name = serializers.CharField(
+        source="second_semen_product.name", read_only=True, default=None
+    )
+    second_semen_sire_code = serializers.CharField(
+        source="second_semen_product.sire_code", read_only=True, default=None
+    )
 
     class Meta:
         model = AIRecord
         fields = [
-            "id", "farmer_name", "farmer_phone", "cow_id", "cow_breed",
+            # Identification
+            "id", "certificate_no",
+            # Farmer
+            "farmer_name", "farmer_phone", "sub_location", "farm_ai_no", "amount_charged",
+            # Animal
+            "cow_id", "animal_name", "cow_breed", "animal_dob",
+            # Last calving
+            "last_calving_date", "last_calving_outcome",
+            # First insemination
             "semen_product", "semen_product_name", "semen_sire_code",
-            "insemination_date", "technician", "status", "notes",
+            "insemination_date", "insemination_time", "bull_code", "bull_name", "technician",
+            # Second insemination
+            "second_semen_product", "second_semen_product_name", "second_semen_sire_code",
+            "second_insemination_date", "second_insemination_time",
+            "second_bull_code", "second_bull_name", "second_technician",
+            # Outcome
+            "status", "measure", "notes",
             "created_at", "updated_at",
         ]
-        read_only_fields = ["id", "created_at", "updated_at"]
+        read_only_fields = ["id", "certificate_no", "created_at", "updated_at"]

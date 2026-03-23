@@ -35,7 +35,7 @@ function RelatedProductCard({ product }: { product: Product }) {
       className="bg-white rounded-xl border border-gray-100 p-3 cursor-pointer hover:shadow-sm hover:-translate-y-0.5 transition-all"
     >
       {product.image ? (
-        <img src={product.image} alt={product.name} className="w-full aspect-square object-cover rounded-lg mb-2" />
+        <img src={product.image} alt={product.name} className="w-full aspect-square object-cover rounded-lg mb-2" loading="lazy" />
       ) : (
         <div className="w-full aspect-square bg-gray-50 rounded-lg mb-2 flex items-center justify-center">
           <Beef className="w-8 h-8 text-gray-200" />
@@ -159,6 +159,7 @@ export default function ProductDetailPage() {
                     src={displayImage}
                     alt={product.name}
                     className="w-full h-full object-cover"
+                    fetchPriority="high"
                   />
                 ) : (
                   <Beef className="w-20 h-20 text-gray-200" />
@@ -172,7 +173,7 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedImage(img)}
                       className={`shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${selectedImage === img || (!selectedImage && idx === 0) ? "border-[#0B3A2C]" : "border-gray-200 hover:border-gray-300"}`}
                     >
-                      <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" />
                     </button>
                   ))}
                 </div>

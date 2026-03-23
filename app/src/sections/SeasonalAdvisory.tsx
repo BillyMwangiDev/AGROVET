@@ -69,6 +69,7 @@ export default function SeasonalAdvisory() {
               src="/images/seasonal_planting.jpg"
               alt="Seasonal Planting"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             {/* Season Badge */}
             <div className="absolute top-6 left-6 bg-[#E4B83A] text-[#111915] px-4 py-2 rounded-full font-semibold text-sm">

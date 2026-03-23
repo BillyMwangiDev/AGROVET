@@ -33,7 +33,7 @@ export function useUpdateAIRecord() {
       patch,
     }: {
       id: string;
-      patch: Partial<Pick<ApiAIRecord, "status" | "notes">>;
+      patch: Partial<Omit<ApiAIRecord, "id" | "certificate_no" | "created_at" | "updated_at">>;
     }) => updateAIRecord(id, patch),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["aiRecords"] });

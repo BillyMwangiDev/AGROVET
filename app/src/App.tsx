@@ -25,8 +25,8 @@ const queryClient = new QueryClient({
     queries: {
       retry: 1,
       refetchOnWindowFocus: false,
-      staleTime: 30 * 1000,        // 30s before a refetch is triggered
-      gcTime: 5 * 60 * 1000,       // Drop unused cache after 5 min
+      staleTime: 5 * 60 * 1000,    // 5 min — prevents mid-scroll refetches on slow networks
+      gcTime: 10 * 60 * 1000,      // Drop unused cache after 10 min
     },
   },
 });

@@ -94,6 +94,7 @@ export default function FeaturedStory() {
               src="/images/featured_produce_basket.jpg"
               alt="Fresh produce basket"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             {/* Subtle overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

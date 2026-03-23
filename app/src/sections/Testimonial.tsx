@@ -74,6 +74,7 @@ export default function Testimonial() {
                 src="/images/testimonial_customer.jpg"
                 alt="Grace Muthoni"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="text-left">

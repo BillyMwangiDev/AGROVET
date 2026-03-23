@@ -111,7 +111,7 @@ export function useInventory(params?: { category?: string; search?: string }) {
   return useQuery({
     queryKey: ["inventory", params],
     queryFn: () => getInventory(params),
-    staleTime: 30 * 1000,
+    staleTime: 2 * 60 * 1000,
   });
 }
 

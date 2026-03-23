@@ -1,4 +1,5 @@
 import uuid
+from datetime import date
 from django.db import models
 from django.conf import settings
 
@@ -104,11 +105,45 @@ class AIRecord(models.Model):
         ("failed", "Failed"),
     ]
 
+    CALVING_OUTCOME_CHOICES = [
+        ("bull", "Bull"),
+        ("heifer", "Heifer"),
+        ("twin", "Twin"),
+        ("abortion", "Abortion"),
+        ("unknown", "Unknown"),
+        ("died", "Animal Died"),
+        ("slaughtered", "Slaughtered"),
+        ("sold", "Sold"),
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    # Certificate identification
+    certificate_no = models.CharField(max_length=25, unique=True, blank=True)
+
+    # Farmer details
     farmer_name = models.CharField(max_length=255)
     farmer_phone = models.CharField(max_length=20)
-    cow_id = models.CharField(max_length=50)
+    sub_location = models.CharField(max_length=100, blank=True)
+    farm_ai_no = models.CharField(max_length=50, blank=True, verbose_name="Farm A.I No.")
+    amount_charged = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True,
+        verbose_name="Service Fee (Kshs)"
+    )
+
+    # Animal details
+    cow_id = models.CharField(max_length=50, verbose_name="Ear No.")
+    animal_name = models.CharField(max_length=100, blank=True)
     cow_breed = models.CharField(max_length=100)
+    animal_dob = models.DateField(null=True, blank=True, verbose_name="Animal Date of Birth")
+
+    # Last calving
+    last_calving_date = models.DateField(null=True, blank=True)
+    last_calving_outcome = models.CharField(
+        max_length=20, choices=CALVING_OUTCOME_CHOICES, blank=True
+    )
+
+    # First insemination
     semen_product = models.ForeignKey(
         "inventory.Product",
         on_delete=models.PROTECT,
@@ -116,8 +151,29 @@ class AIRecord(models.Model):
         related_name="ai_records",
     )
     insemination_date = models.DateField()
+    insemination_time = models.TimeField(null=True, blank=True)
+    bull_code = models.CharField(max_length=50, blank=True)
+    bull_name = models.CharField(max_length=100, blank=True)
     technician = models.CharField(max_length=255)
+
+    # Second insemination (optional repeat)
+    second_semen_product = models.ForeignKey(
+        "inventory.Product",
+        on_delete=models.PROTECT,
+        limit_choices_to={"is_ai_product": True},
+        related_name="ai_records_second",
+        null=True,
+        blank=True,
+    )
+    second_insemination_date = models.DateField(null=True, blank=True)
+    second_insemination_time = models.TimeField(null=True, blank=True)
+    second_bull_code = models.CharField(max_length=50, blank=True)
+    second_bull_name = models.CharField(max_length=100, blank=True)
+    second_technician = models.CharField(max_length=255, blank=True)
+
+    # Outcome & notes
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default="scheduled")
+    measure = models.TextField(blank=True, verbose_name="Measurements / Observations")
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -125,8 +181,16 @@ class AIRecord(models.Model):
     class Meta:
         ordering = ["-insemination_date"]
 
+    def save(self, *args, **kwargs):
+        if not self.certificate_no:
+            today = date.today()
+            prefix = f"NIC-AI-{today.strftime('%Y%m%d')}-"
+            count = AIRecord.objects.filter(certificate_no__startswith=prefix).count()
+            self.certificate_no = f"{prefix}{str(count + 1).zfill(3)}"
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return f"{self.farmer_name} — {self.cow_id} ({self.get_status_display()})"
+        return f"{self.certificate_no} — {self.farmer_name} / {self.cow_id} ({self.get_status_display()})"
 
 
 class MpesaTransaction(models.Model):

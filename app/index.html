@@ -37,16 +37,25 @@
     <meta name="twitter:description" content="Premium livestock feeds, AI semen, veterinary supplies and crop solutions in Naromoru, Nyeri County, Kenya." />
     <meta name="twitter:image" content="https://nicmahagrovet.co.ke/images/hero_card_b_cow.jpg" />
 
-    <!-- Google Fonts: Inter + Geist Mono -->
+    <!-- Google Fonts: Inter (used weights only) + Geist Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <!-- Performance: Preconnect & DNS Prefetch -->
     <link rel="preconnect" href="https://nicmahagrovet.co.ke" />
     <link rel="dns-prefetch" href="https://wa.me" />
     <link rel="dns-prefetch" href="https://api.safaricom.co.ke" />
     <link rel="dns-prefetch" href="https://sandbox.safaricom.co.ke" />
+
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="/images/hero_card_b_cow.jpg" fetchpriority="high" />
+
+    <!-- PWA / Mobile meta -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json">
