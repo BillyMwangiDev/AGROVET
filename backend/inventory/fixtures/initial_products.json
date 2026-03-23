@@ -1,0 +1,346 @@
+[
+  {
+    "model": "inventory.category",
+    "pk": 1,
+    "fields": { "name": "Feeds", "slug": "feeds" }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 2,
+    "fields": { "name": "Seeds", "slug": "seeds" }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 3,
+    "fields": { "name": "Chemicals", "slug": "chemicals" }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 4,
+    "fields": { "name": "Semen", "slug": "semen" }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 5,
+    "fields": { "name": "Equipment", "slug": "equipment" }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000001",
+    "fields": {
+      "name": "Dairy Meal",
+      "category": 1,
+      "price": "2800.00",
+      "unit": "50kg bag",
+      "description": "High-quality dairy meal for maximum milk production",
+      "is_active": true,
+      "stock_level": 150,
+      "reorder_point": 50,
+      "max_stock": 300,
+      "supplier": "Unga Feeds Ltd",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-15T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000002",
+    "fields": {
+      "name": "Chick Mash",
+      "category": 1,
+      "price": "1800.00",
+      "unit": "50kg bag",
+      "description": "Nutritious starter feed for chicks",
+      "is_active": true,
+      "stock_level": 80,
+      "reorder_point": 100,
+      "max_stock": 250,
+      "supplier": "Unga Feeds Ltd",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-10T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000003",
+    "fields": {
+      "name": "Growers Pellets",
+      "category": 1,
+      "price": "2200.00",
+      "unit": "50kg bag",
+      "description": "Balanced feed for growing poultry",
+      "is_active": true,
+      "stock_level": 45,
+      "reorder_point": 60,
+      "max_stock": 200,
+      "supplier": "Unga Feeds Ltd",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-12T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000004",
+    "fields": {
+      "name": "Mineral Supplement",
+      "category": 1,
+      "price": "850.00",
+      "unit": "5kg block",
+      "description": "Essential minerals for livestock health",
+      "is_active": true,
+      "stock_level": 200,
+      "reorder_point": 100,
+      "max_stock": 400,
+      "supplier": "Vetcare Supplies",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-18T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000005",
+    "fields": {
+      "name": "Certified Maize Seeds",
+      "category": 2,
+      "price": "450.00",
+      "unit": "2kg packet",
+      "description": "High-yielding maize variety for local conditions",
+      "is_active": true,
+      "stock_level": 500,
+      "reorder_point": 200,
+      "max_stock": 1000,
+      "supplier": "Kenya Seed Company",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000006",
+    "fields": {
+      "name": "Bean Seeds - Rosecoco",
+      "category": 2,
+      "price": "380.00",
+      "unit": "2kg packet",
+      "description": "Drought-tolerant bean variety",
+      "is_active": true,
+      "stock_level": 15,
+      "reorder_point": 50,
+      "max_stock": 300,
+      "supplier": "Kenya Seed Company",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000007",
+    "fields": {
+      "name": "Vegetable Seeds Mix",
+      "category": 2,
+      "price": "250.00",
+      "unit": "assorted packet",
+      "description": "Mix of kale, spinach, and cabbage seeds",
+      "is_active": true,
+      "stock_level": 150,
+      "reorder_point": 50,
+      "max_stock": 300,
+      "supplier": "Kenya Seed Company",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": null
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000008",
+    "fields": {
+      "name": "NPK Fertilizer",
+      "category": 3,
+      "price": "3200.00",
+      "unit": "50kg bag",
+      "description": "Balanced NPK fertilizer for all crops",
+      "is_active": true,
+      "stock_level": 120,
+      "reorder_point": 80,
+      "max_stock": 250,
+      "supplier": "Yara Kenya",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": "2024-01-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000009",
+    "fields": {
+      "name": "Pesticide - General",
+      "category": 3,
+      "price": "1200.00",
+      "unit": "1L bottle",
+      "description": "Broad-spectrum pest control",
+      "is_active": true,
+      "stock_level": 75,
+      "reorder_point": 30,
+      "max_stock": 150,
+      "supplier": "Yara Kenya",
+      "is_ai_product": false,
+      "breed": "",
+      "origin_country": "",
+      "sire_code": null,
+      "genetic_traits": {},
+      "expiry_date": null,
+      "last_restocked": null
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000010",
+    "fields": {
+      "name": "Friesian Semen - High Yield",
+      "category": 4,
+      "price": "8500.00",
+      "unit": "straw",
+      "description": "Premium Friesian genetics for high milk production",
+      "is_active": true,
+      "stock_level": 25,
+      "reorder_point": 20,
+      "max_stock": 50,
+      "supplier": "World Wide Sires",
+      "is_ai_product": true,
+      "breed": "Friesian",
+      "origin_country": "International",
+      "sire_code": "FR-2024-001",
+      "genetic_traits": {
+        "milkYield": "12,000L+ per lactation",
+        "hardiness": "Moderate",
+        "fertility": "95% conception rate",
+        "longevity": "5+ lactations"
+      },
+      "expiry_date": null,
+      "last_restocked": "2024-01-25T00:00:00Z"
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000011",
+    "fields": {
+      "name": "Jersey Semen - Butterfat",
+      "category": 4,
+      "price": "9200.00",
+      "unit": "straw",
+      "description": "Jersey genetics for high butterfat content",
+      "is_active": true,
+      "stock_level": 18,
+      "reorder_point": 20,
+      "max_stock": 50,
+      "supplier": "World Wide Sires",
+      "is_ai_product": true,
+      "breed": "Jersey",
+      "origin_country": "International",
+      "sire_code": "JR-2024-003",
+      "genetic_traits": {
+        "milkYield": "7,000L+ per lactation",
+        "hardiness": "High",
+        "fertility": "92% conception rate",
+        "longevity": "6+ lactations"
+      },
+      "expiry_date": null,
+      "last_restocked": null
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000012",
+    "fields": {
+      "name": "Ayrshire Semen - Hardy",
+      "category": 4,
+      "price": "7800.00",
+      "unit": "straw",
+      "description": "Hardy Ayrshire breed for tough conditions",
+      "is_active": true,
+      "stock_level": 30,
+      "reorder_point": 20,
+      "max_stock": 50,
+      "supplier": "World Wide Sires",
+      "is_ai_product": true,
+      "breed": "Ayrshire",
+      "origin_country": "Local",
+      "sire_code": "AY-2024-002",
+      "genetic_traits": {
+        "milkYield": "8,500L+ per lactation",
+        "hardiness": "Very High",
+        "fertility": "94% conception rate",
+        "longevity": "7+ lactations"
+      },
+      "expiry_date": null,
+      "last_restocked": null
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": "00000000-0000-0000-0000-000000000013",
+    "fields": {
+      "name": "Guernsey Semen - Premium",
+      "category": 4,
+      "price": "9800.00",
+      "unit": "straw",
+      "description": "Premium Guernsey genetics for golden milk",
+      "is_active": true,
+      "stock_level": 12,
+      "reorder_point": 20,
+      "max_stock": 50,
+      "supplier": "World Wide Sires",
+      "is_ai_product": true,
+      "breed": "Guernsey",
+      "origin_country": "International",
+      "sire_code": "GU-2024-004",
+      "genetic_traits": {
+        "milkYield": "6,500L+ per lactation",
+        "hardiness": "High",
+        "fertility": "93% conception rate",
+        "longevity": "6+ lactations"
+      },
+      "expiry_date": null,
+      "last_restocked": null
+    }
+  }
+]

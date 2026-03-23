@@ -1,0 +1,14 @@
+name,category,price,stock,unit,description,supplier,minstock,maxstock,is_ai_product,breed,sire_code,origin_country
+Dairy Meal,Feeds,2800,150,50kg bag,High-quality dairy meal for maximum milk production,Unga Feeds Ltd,50,300,NO,,,
+Chick Mash,Feeds,1800,80,50kg bag,Nutritious starter feed for chicks,Unga Feeds Ltd,100,250,NO,,,
+Growers Pellets,Feeds,2200,45,50kg bag,Balanced feed for growing poultry,Unga Feeds Ltd,60,200,NO,,,
+Mineral Supplement,Feeds,850,200,5kg block,Essential minerals for livestock health,Vetcare Supplies,100,400,NO,,,
+Certified Maize Seeds,Seeds,450,500,2kg packet,High-yielding maize variety for local conditions,Kenya Seed Company,200,1000,NO,,,
+Bean Seeds - Rosecoco,Seeds,380,15,2kg packet,Drought-tolerant bean variety,Kenya Seed Company,50,300,NO,,,
+Vegetable Seeds Mix,Seeds,250,150,assorted packet,Mix of kale spinach and cabbage seeds,Kenya Seed Company,50,300,NO,,,
+NPK Fertilizer,Chemicals,3200,120,50kg bag,Balanced NPK fertilizer for all crops,Yara Kenya,80,250,NO,,,
+Pesticide - General,Chemicals,1200,75,1L bottle,Broad-spectrum pest control,Yara Kenya,30,150,NO,,,
+Friesian Semen - High Yield,Semen,8500,25,straw,Premium Friesian genetics for high milk production,World Wide Sires,20,50,YES,Friesian,FR-2024-001,International
+Jersey Semen - Butterfat,Semen,9200,18,straw,Jersey genetics for high butterfat content,World Wide Sires,20,50,YES,Jersey,JR-2024-003,International
+Ayrshire Semen - Hardy,Semen,7800,30,straw,Hardy Ayrshire breed for tough conditions,World Wide Sires,20,50,YES,Ayrshire,AY-2024-002,Local
+Guernsey Semen - Premium,Semen,9800,12,straw,Premium Guernsey genetics for golden milk,World Wide Sires,20,50,YES,Guernsey,GU-2024-004,International

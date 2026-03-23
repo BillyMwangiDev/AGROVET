@@ -1,0 +1,873 @@
+{"time":"2026-03-05 20:08:21,583","level":"ERROR","logger":"django.request","request_id":"4a9fc2fb","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-05 20:08:21,597","level":"ERROR","logger":"django.server","request_id":"4a9fc2fb","message":""POST /api/auth/token/ HTTP/1.1" 500 231875"}
+{"time":"2026-03-05 20:08:27,706","level":"ERROR","logger":"django.request","request_id":"c6092e36","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-05 20:08:27,714","level":"ERROR","logger":"django.server","request_id":"c6092e36","message":""POST /api/auth/token/ HTTP/1.1" 500 231873"}
+{"time":"2026-03-05 20:08:36,678","level":"ERROR","logger":"django.request","request_id":"583fc3c9","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-05 20:08:36,690","level":"ERROR","logger":"django.server","request_id":"583fc3c9","message":""POST /api/auth/token/ HTTP/1.1" 500 231875"}
+{"time":"2026-03-05 20:08:45,605","level":"WARNING","logger":"django.server","request_id":"a82239aa","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:08:57,351","level":"WARNING","logger":"django.server","request_id":"b548b282","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:12:57,754","level":"WARNING","logger":"django.server","request_id":"aebb771d","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:12:58,765","level":"WARNING","logger":"django.server","request_id":"87cc769b","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:13:31,005","level":"WARNING","logger":"django.server","request_id":"c6730aec","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:18:43,552","level":"WARNING","logger":"django.server","request_id":"85077ad3","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:18:44,817","level":"WARNING","logger":"django.server","request_id":"10f677ff","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:19:20,843","level":"WARNING","logger":"django.server","request_id":"34e144c2","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-05 20:19:30,355","level":"WARNING","logger":"django.server","request_id":"02457fc7","message":""POST /api/auth/token/ HTTP/1.1" 429 71"}
+{"time":"2026-03-06 05:50:41,964","level":"ERROR","logger":"django.request","request_id":"1eeb37a0","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-06 05:50:41,983","level":"ERROR","logger":"django.server","request_id":"1eeb37a0","message":""POST /api/auth/token/ HTTP/1.1" 500 231891"}
+{"time":"2026-03-06 05:51:06,887","level":"ERROR","logger":"django.request","request_id":"ff0b7314","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-06 05:51:06,892","level":"ERROR","logger":"django.server","request_id":"ff0b7314","message":""POST /api/auth/token/ HTTP/1.1" 500 229317"}
+{"time":"2026-03-06 05:51:13,386","level":"ERROR","logger":"django.request","request_id":"0f2ca665","message":"Internal Server Error: /api/auth/token/"}
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 17, in validate
+    data = super().validate(attrs)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 75, in validate
+    refresh = self.get_token(self.user)
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\users\token.py", line 10, in get_token
+    token = super().get_token(user)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\rest_framework_simplejwt\tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=user,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        expires_at=datetime_from_epoch(exp),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+{"time":"2026-03-06 05:51:13,393","level":"ERROR","logger":"django.server","request_id":"0f2ca665","message":""POST /api/auth/token/ HTTP/1.1" 500 229321"}
+{"time":"2026-03-06 14:47:06,297","level":"WARNING","logger":"django.server","request_id":"2cb4f200","message":""GET /api/products/ HTTP/1.1" 401 172"}
+{"time":"2026-03-06 14:47:06,320","level":"WARNING","logger":"django.server","request_id":"3926c2a0","message":""GET /api/products/?sort=best_selling&limit=8 HTTP/1.1" 401 172"}
+{"time":"2026-03-06 14:47:06,322","level":"WARNING","logger":"django.server","request_id":"ce56c69b","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-06 14:47:06,339","level":"WARNING","logger":"django.server","request_id":"3229730c","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-06 22:48:50,433","level":"ERROR","logger":"pos","request_id":"9a0373a9","message":"STK push failed for phone=254712345678 amount=580: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"}
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\views.py", line 631, in post
+    result = stk_push(
+        phone=phone,
+    ...<2 lines>...
+        description="Agrovet Sale",
+    )
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 71, in stk_push
+    token = get_access_token()
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 45, in get_access_token
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+{"time":"2026-03-06 22:48:51,461","level":"ERROR","logger":"django.request","request_id":"9a0373a9","message":"Bad Gateway: /api/pos/mpesa/stk-push/"}
+{"time":"2026-03-06 22:48:51,476","level":"WARNING","logger":"pos","request_id":"8d88a2be","message":"M-Pesa callback rejected: invalid secret token"}
+{"time":"2026-03-07 10:09:57,180","level":"WARNING","logger":"django.server","request_id":"5c3d40ee","message":""GET /api/products/ HTTP/1.1" 401 172"}
+{"time":"2026-03-07 10:09:57,184","level":"WARNING","logger":"django.server","request_id":"b2eee5a0","message":""GET /api/products/?sort=best_selling&limit=8 HTTP/1.1" 401 172"}
+{"time":"2026-03-07 10:12:12,724","level":"ERROR","logger":"pos","request_id":"c3056170","message":"STK push failed for phone=254712345678 amount=580: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"}
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\views.py", line 631, in post
+    result = stk_push(
+        phone=phone,
+    ...<2 lines>...
+        description="Agrovet Sale",
+    )
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 71, in stk_push
+    token = get_access_token()
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 45, in get_access_token
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+{"time":"2026-03-07 10:12:13,694","level":"ERROR","logger":"django.request","request_id":"c3056170","message":"Bad Gateway: /api/pos/mpesa/stk-push/"}
+{"time":"2026-03-07 10:12:13,716","level":"WARNING","logger":"pos","request_id":"eff33591","message":"M-Pesa callback rejected: invalid secret token"}
+{"time":"2026-03-07 10:16:58,580","level":"ERROR","logger":"pos","request_id":"e07e7778","message":"STK push failed for phone=254712345678 amount=580: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"}
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\views.py", line 631, in post
+    result = stk_push(
+        phone=phone,
+    ...<2 lines>...
+        description="Agrovet Sale",
+    )
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 71, in stk_push
+    token = get_access_token()
+  File "C:\Users\USER\Desktop\PROJECTS\AGROVET\backend\pos\services\mpesa.py", line 45, in get_access_token
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+{"time":"2026-03-07 10:16:58,584","level":"ERROR","logger":"django.request","request_id":"e07e7778","message":"Bad Gateway: /api/pos/mpesa/stk-push/"}
+{"time":"2026-03-07 10:16:58,594","level":"WARNING","logger":"pos","request_id":"443a646d","message":"M-Pesa callback rejected: invalid secret token"}
+{"time":"2026-03-07 11:21:49,708","level":"WARNING","logger":"django.server","request_id":"d0953d81","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:22:05,102","level":"WARNING","logger":"django.server","request_id":"17a5a3b1","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:22:09,187","level":"WARNING","logger":"django.server","request_id":"c05c8f1b","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:23:05,555","level":"WARNING","logger":"django.server","request_id":"1d981dd4","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:23:21,973","level":"WARNING","logger":"django.server","request_id":"9e49ad72","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:23:36,680","level":"WARNING","logger":"django.server","request_id":"3a3b1957","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:23:51,335","level":"WARNING","logger":"django.server","request_id":"7fb62015","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:24:08,187","level":"WARNING","logger":"django.server","request_id":"1e7a0076","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:24:25,634","level":"WARNING","logger":"django.server","request_id":"4aafedf3","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:24:40,382","level":"WARNING","logger":"django.server","request_id":"382bd862","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:24:58,931","level":"WARNING","logger":"django.server","request_id":"356d8a81","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:25:14,166","level":"WARNING","logger":"django.server","request_id":"2eeedaf1","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:25:27,899","level":"WARNING","logger":"django.server","request_id":"73b66433","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:25:43,194","level":"WARNING","logger":"django.server","request_id":"9e30ede0","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:25:56,706","level":"WARNING","logger":"django.server","request_id":"9377a8e3","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:26:12,472","level":"WARNING","logger":"django.server","request_id":"687bfe19","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:26:24,890","level":"WARNING","logger":"django.server","request_id":"45ecd93e","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:26:38,385","level":"WARNING","logger":"django.server","request_id":"6ebfcfce","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:26:54,805","level":"WARNING","logger":"django.server","request_id":"a51a1234","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:27:09,927","level":"WARNING","logger":"django.server","request_id":"1a77d5bb","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:27:25,125","level":"WARNING","logger":"django.server","request_id":"135d23f1","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 11:27:41,083","level":"WARNING","logger":"django.server","request_id":"0b21912f","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 17:35:38,567","level":"WARNING","logger":"django.server","request_id":"19a70d36","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 17:35:40,021","level":"WARNING","logger":"django.server","request_id":"8424a1a1","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 17:35:52,279","level":"WARNING","logger":"django.server","request_id":"4fda6887","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-07 17:35:53,264","level":"WARNING","logger":"django.server","request_id":"1d2adabf","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-08 08:26:44,637","level":"WARNING","logger":"django.server","request_id":"0886e9de","message":""GET /api/products/?sort=name HTTP/1.1" 401 172"}
+{"time":"2026-03-08 08:26:44,655","level":"WARNING","logger":"django.server","request_id":"bbf147df","message":""GET /api/categories/?top_only=true HTTP/1.1" 401 172"}
+{"time":"2026-03-08 08:26:44,656","level":"WARNING","logger":"django.server","request_id":"44a1270f","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-08 08:26:44,663","level":"WARNING","logger":"django.server","request_id":"c7135b0e","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-08 09:17:13,230","level":"WARNING","logger":"django.server","request_id":"71642fd2","message":""GET /api/auth/store-config/ HTTP/1.1" 401 58"}
+{"time":"2026-03-09 21:00:12,965","level":"WARNING","logger":"django.server","request_id":"877f5af6","message":""POST /auth/login HTTP/1.1" 404 2760"}
+{"time":"2026-03-09 21:00:24,772","level":"WARNING","logger":"django.server","request_id":"db46e5dc","message":""GET / HTTP/1.1" 404 2711"}
+{"time":"2026-03-23 06:44:37,125","level":"WARNING","logger":"django.server","request_id":"3cf8bbac","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-23 11:19:10,616","level":"WARNING","logger":"django.server","request_id":"2090c2fa","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-23 11:19:20,407","level":"WARNING","logger":"django.server","request_id":"b49308ce","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
