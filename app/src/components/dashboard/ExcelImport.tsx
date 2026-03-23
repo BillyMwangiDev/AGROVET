@@ -29,6 +29,7 @@ export default function ExcelImport() {
   const rawFileRef = useRef<File | null>(null);
   const queryClient = useQueryClient();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- XLSX sheet_to_json returns untyped row data
   const validateRow = (row: any): PreviewRow => {
     const errors: string[] = [];
     
@@ -91,7 +92,7 @@ export default function ExcelImport() {
 
         const validCount = validated.filter((r) => r.valid).length;
         toast.success(`Loaded ${validCount} valid products out of ${validated.length} rows`);
-      } catch (error) {
+      } catch {
         toast.error('Error reading file. Please check the format.');
       }
     };
@@ -140,8 +141,9 @@ export default function ExcelImport() {
       setPreviewData([]);
       setFileName('');
       rawFileRef.current = null;
-    } catch (err: any) {
-      toast.error(err?.response?.data?.detail ?? 'Import failed. Check your file and try again.');
+    } catch (err: unknown) {
+      const apiErr = err as { response?: { data?: { detail?: string } } };
+      toast.error(apiErr?.response?.data?.detail ?? 'Import failed. Check your file and try again.');
     } finally {
       setIsImporting(false);
     }

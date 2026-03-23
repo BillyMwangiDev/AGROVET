@@ -1,3 +1,5 @@
+// Context file — exports both Provider component and useAuthContext hook (intentional co-location)
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, type ReactNode } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import type { MeResponse } from "@/api/auth";

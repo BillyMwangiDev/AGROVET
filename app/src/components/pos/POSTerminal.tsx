@@ -92,7 +92,6 @@ export default function POSTerminal() {
   // Cleanup camera stream on unmount
   useEffect(() => {
     return () => stopCamera();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -208,12 +207,13 @@ export default function POSTerminal() {
         setRedeemPoints(0);
         setIsCheckoutOpen(false);
       },
-      onError: (err: any) => {
-        const stockErrors = err?.response?.data?.stock_errors;
+      onError: (err: unknown) => {
+        const apiErr = err as { response?: { data?: { stock_errors?: string[]; detail?: string } } };
+        const stockErrors = apiErr?.response?.data?.stock_errors;
         if (stockErrors?.length) {
           toast.error(stockErrors[0]);
         } else {
-          toast.error(err?.response?.data?.detail ?? 'Sale failed. Please try again.');
+          toast.error(apiErr?.response?.data?.detail ?? 'Sale failed. Please try again.');
         }
       },
     });
@@ -244,7 +244,7 @@ export default function POSTerminal() {
         }
       }, 100);
 
-      // @ts-ignore — BarcodeDetector not in TypeScript lib yet
+      // @ts-expect-error — BarcodeDetector not in TypeScript lib yet
       const detector = new BarcodeDetector({
         formats: ['ean_13', 'ean_8', 'qr_code', 'code_128', 'code_39', 'upc_a'],
       });
@@ -300,8 +300,9 @@ export default function POSTerminal() {
           setMpesaCheckoutId(data.checkout_request_id);
           toast.success(data.customer_message || 'STK Push sent — check your phone.');
         },
-        onError: (err: any) => {
-          toast.error(err?.response?.data?.detail ?? 'Failed to send STK Push. Try again.');
+        onError: (err: unknown) => {
+          const apiErr = err as { response?: { data?: { detail?: string } } };
+          toast.error(apiErr?.response?.data?.detail ?? 'Failed to send STK Push. Try again.');
         },
       }
     );

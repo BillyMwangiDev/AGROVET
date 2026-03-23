@@ -3,15 +3,13 @@ import { login as apiLogin, getMe, pinVerify as apiPinVerify, type MeResponse } 
 
 export function useAuth() {
   const [user, setUser] = useState<MeResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Start loading only if there's a token to validate; otherwise we're already done
+  const [loading, setLoading] = useState(() => !!localStorage.getItem("access_token"));
 
   // On mount, restore user from existing token
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    if (!token) {
-      setLoading(false);
-      return;
-    }
+    if (!token) return;
     getMe()
       .then(setUser)
       .catch(() => {

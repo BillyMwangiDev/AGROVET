@@ -42,8 +42,9 @@ export default function IdleLock({ children }: IdleLockProps) {
   useEffect(() => {
     if (!isAuthenticated || !isCashierRole || !isPOSRoute) {
       if (timerRef.current) clearTimeout(timerRef.current);
-      setIsLocked(false);
-      return;
+      // Defer to avoid synchronous setState in effect body (react-hooks/set-state-in-effect)
+      const id = setTimeout(() => setIsLocked(false), 0);
+      return () => clearTimeout(id);
     }
 
     const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'];
@@ -54,6 +55,7 @@ export default function IdleLock({ children }: IdleLockProps) {
       events.forEach(e => window.removeEventListener(e, resetTimer));
       if (timerRef.current) clearTimeout(timerRef.current);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- resetTimer is recreated each render intentionally
   }, [isAuthenticated, isCashierRole, isPOSRoute, idleMs]);
 
   const handleUnlock = () => {

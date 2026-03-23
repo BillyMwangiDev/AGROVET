@@ -1,3 +1,5 @@
+// Context file — exports both POSProvider component and usePOSContext hook (intentional co-location)
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
 interface POSContextType {

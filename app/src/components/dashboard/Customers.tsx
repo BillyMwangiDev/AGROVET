@@ -172,6 +172,13 @@ export default function Customers() {
     });
   };
 
+  // eslint-disable-next-line react-hooks/purity -- Date.now() used for display-only "active this month" count; staleness is acceptable
+  const now = Date.now();
+  const activeThisMonthCount = customers.filter((c) => {
+    if (!c.last_purchase) return false;
+    return (now - new Date(c.last_purchase).getTime()) / 86_400_000 <= 30;
+  }).length;
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -223,10 +230,7 @@ export default function Customers() {
               <div>
                 <p className="text-sm text-muted-foreground">Active This Month</p>
                 <p className="text-2xl font-bold text-green-600">
-                  {customers.filter((c) => {
-                    if (!c.last_purchase) return false;
-                    return (Date.now() - new Date(c.last_purchase).getTime()) / 86_400_000 <= 30;
-                  }).length}
+                  {activeThisMonthCount}
                 </p>
               </div>
             </div>

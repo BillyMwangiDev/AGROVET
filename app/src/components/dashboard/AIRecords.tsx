@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Search, Plus, CheckCircle, Clock, XCircle, Eye, FileText } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,31 @@ import { useAIRecords, useCreateAIRecord, useUpdateAIRecord } from '@/hooks/useA
 import { useProducts } from '@/hooks/useProducts';
 import type { ApiAIRecord } from '@/api/aiRecords';
 import { parseDecimal, formatKES } from '@/utils/formatCurrency';
+
+function SectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex items-center gap-2 mt-5 mb-3">
+      <div className="h-px flex-1 bg-border" />
+      <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground px-2">{children}</span>
+      <div className="h-px flex-1 bg-border" />
+    </div>
+  );
+}
+
+function Field({
+  label, required, children,
+}: {
+  label: string; required?: boolean; children: ReactNode;
+}) {
+  return (
+    <div>
+      <label className="text-sm font-medium text-foreground">
+        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
 
 const statusConfig = {
   scheduled: { label: 'Scheduled', color: 'bg-blue-100 text-blue-700', icon: Clock },
@@ -141,27 +166,6 @@ export default function AIRecords() {
       }
     );
   };
-
-  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center gap-2 mt-5 mb-3">
-      <div className="h-px flex-1 bg-border" />
-      <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground px-2">{children}</span>
-      <div className="h-px flex-1 bg-border" />
-    </div>
-  );
-
-  const Field = ({
-    label, required, children,
-  }: {
-    label: string; required?: boolean; children: React.ReactNode;
-  }) => (
-    <div>
-      <label className="text-sm font-medium text-foreground">
-        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
-      </label>
-      {children}
-    </div>
-  );
 
   return (
     <div className="space-y-6">

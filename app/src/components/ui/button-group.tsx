@@ -1,3 +1,5 @@
+// shadcn/ui component — exports both component and variants helper; fast-refresh handled by vite's HMR boundary
+/* eslint-disable react-refresh/only-export-components */
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 

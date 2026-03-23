@@ -1,3 +1,5 @@
+// Context file — exports both CartProvider component and useCartContext hook (intentional co-location)
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 import type { Product } from "@/types";
 import { parseDecimal } from "@/utils/formatCurrency";

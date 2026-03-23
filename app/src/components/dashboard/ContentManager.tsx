@@ -48,9 +48,10 @@ function ArticleForm({
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [bodyReady, setBodyReady] = useState(!isEdit);
 
-  // Pre-populate form when fetched article arrives
+  // Pre-populate form when fetched article arrives — setState driven by server data, not render cascade
   useEffect(() => {
     if (existingArticle) {
+      /* eslint-disable react-hooks/set-state-in-effect */
       setForm({
         title: existingArticle.title,
         category: existingArticle.category,
@@ -59,6 +60,7 @@ function ArticleForm({
         is_published: existingArticle.is_published,
       });
       setBodyReady(true);
+      /* eslint-enable react-hooks/set-state-in-effect */
     }
   }, [existingArticle]);
 

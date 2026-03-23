@@ -32,13 +32,15 @@ export default function CustomerSignupPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const { confirmPassword, ...payload } = data;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { confirmPassword: _confirmPassword, ...payload } = data;
       await signup(payload);
       toast.success('Account created! You can now log in.');
       navigate('/login');
-    } catch (err: any) {
-      const msg = err.response?.data;
-      if (typeof msg === 'object') {
+    } catch (err: unknown) {
+      const apiErr = err as { response?: { data?: Record<string, unknown> | string } };
+      const msg = apiErr.response?.data;
+      if (msg && typeof msg === 'object') {
         const first = Object.values(msg).flat()[0];
         toast.error(String(first));
       } else {

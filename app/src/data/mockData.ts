@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck — legacy mock data, not imported by any component
 import type { Product, AIRecord, Customer } from '@/types';
 

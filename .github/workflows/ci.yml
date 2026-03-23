@@ -45,6 +45,7 @@ jobs:
         run: |
           cd backend
           pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Run Django system check
         run: |
@@ -55,6 +56,13 @@ jobs:
         run: |
           cd backend
           python manage.py migrate --noinput
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          python -m pytest tests/ -v --tb=short --no-header -q
+        env:
+          DJANGO_SETTINGS_MODULE: agrovet.settings.development
 
   frontend:
     name: React Frontend
@@ -79,6 +87,14 @@ jobs:
         run: |
           cd app
           npm run lint
+
+      - name: Unit tests
+        run: |
+          cd app
+          npm run test
+        env:
+          VITE_API_URL: http://localhost:8000
+          VITE_WHATSAPP_PHONE: "254721908023"
 
       - name: Build
         run: |

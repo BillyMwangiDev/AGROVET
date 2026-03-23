@@ -78,8 +78,10 @@ function ReturnDialog({
   const [returnItems, setReturnItems] = useState<ReturnItem[]>([]);
   const createReturn = useCreateReturn();
 
+  // Reset dialog state when it opens — setState driven by dialog toggle, not render cascade
   useEffect(() => {
     if (open) {
+      /* eslint-disable react-hooks/set-state-in-effect */
       setReturnItems(
         sale.items.map((item) => ({
           product_id: item.product,
@@ -89,6 +91,7 @@ function ReturnDialog({
         }))
       );
       setPaymentMethod('cash');
+      /* eslint-enable react-hooks/set-state-in-effect */
     }
   }, [open, sale]);
 
@@ -410,8 +413,10 @@ export default function ReceiptsHistory() {
     return () => clearTimeout(t);
   }, [search]);
 
-  // Reset page when any filter changes
+  // Reset page when any filter changes — driven by filter toggle, not render cascade
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => { setPage(1); }, [paymentFilter, showReturnsOnly, startDate, endDate]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const params: SaleListParams = {
     start_date: startDate,

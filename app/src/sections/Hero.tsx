@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { MessageCircle, CheckCircle2, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
 
 const WHATSAPP_PHONE = import.meta.env.VITE_WHATSAPP_PHONE || '254740368581';
 
@@ -28,30 +29,27 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    let cleanup: (() => void) | undefined;
-
-    import('gsap').then(({ default: gsap }) => {
-      const ctx = gsap.context(() => {
-        gsap
-          .timeline({ delay: 0.1 })
-          .from(headlineRef.current, { opacity: 0, y: 28, filter: 'blur(6px)', duration: 0.8, ease: 'power3.out' })
-          .from(subRef.current, { opacity: 0, y: 16, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-          .from(
-            buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
-            { opacity: 0, scale: 0.93, y: 10, duration: 0.45, stagger: 0.1, ease: 'back.out(1.7)' },
-            '-=0.3',
-          )
-          .from(stripRef.current, { opacity: 0, y: 6, duration: 0.35, ease: 'power2.out' }, '-=0.15')
-          .from(
-            statsRef.current ? Array.from(statsRef.current.children) : [],
-            { opacity: 0, y: 14, scale: 0.97, duration: 0.4, stagger: 0.08, ease: 'power2.out' },
-            '-=0.25',
-          );
-      });
-      cleanup = () => ctx.revert();
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({ delay: 0.1 })
+        .fromTo(headlineRef.current, { opacity: 0, y: 28, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' })
+        .fromTo(subRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+        .fromTo(
+          buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
+          { opacity: 0, scale: 0.93, y: 10 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.45, stagger: 0.1, ease: 'back.out(1.7)' },
+          '-=0.3',
+        )
+        .fromTo(stripRef.current, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, '-=0.15')
+        .fromTo(
+          statsRef.current ? Array.from(statsRef.current.children) : [],
+          { opacity: 0, y: 14, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.08, ease: 'power2.out' },
+          '-=0.25',
+        );
     });
 
-    return () => cleanup?.();
+    return () => ctx.revert();
   }, []);
 
   return (

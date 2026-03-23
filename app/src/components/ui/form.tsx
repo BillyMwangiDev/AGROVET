@@ -1,3 +1,5 @@
+// shadcn/ui form — exports FormField, FormItem, FormContext etc. alongside components
+/* eslint-disable react-refresh/only-export-components */
 "use client"
 
 import * as React from "react"

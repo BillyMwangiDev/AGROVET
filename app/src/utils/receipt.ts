@@ -51,7 +51,6 @@ export function printReceipt(html: string): void {
   const win = window.open("", "_blank", "width=340,height=700,scrollbars=yes");
   if (!win) {
     if (import.meta.env.DEV) {
-      // eslint-disable-next-line no-console
       console.warn("printReceipt: Could not open print window. Check popup blocker.");
     }
     return;

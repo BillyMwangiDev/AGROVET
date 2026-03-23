@@ -97,8 +97,9 @@ function StaffDialog({ open, onClose, staff, isAdmin }: StaffDialogProps) {
       onClose();
       reset();
     },
-    onError: (err: any) => {
-      toast.error(err.response?.data?.detail ?? 'Failed to create staff member');
+    onError: (err: unknown) => {
+      const apiErr = err as { response?: { data?: { detail?: string } } };
+      toast.error(apiErr.response?.data?.detail ?? 'Failed to create staff member');
     },
   });
 
@@ -109,15 +110,18 @@ function StaffDialog({ open, onClose, staff, isAdmin }: StaffDialogProps) {
       toast.success('Staff member updated');
       onClose();
     },
-    onError: (err: any) => {
-      toast.error(err.response?.data?.detail ?? 'Failed to update staff member');
+    onError: (err: unknown) => {
+      const apiErr = err as { response?: { data?: { detail?: string } } };
+      toast.error(apiErr.response?.data?.detail ?? 'Failed to update staff member');
     },
   });
 
   const onSubmit = (data: StaffFormData) => {
     const payload = { ...data, pin: data.pin || undefined };
     if (isEditing) {
-      const { username, password, ...updatePayload } = payload;
+      // Omit username and password from update payload (not editable after creation)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { username: _username, password: _password, ...updatePayload } = payload;
       updateMutation.mutate(updatePayload);
     } else {
       if (!data.password) { toast.error('Password is required for new staff'); return; }
@@ -222,8 +226,9 @@ export default function StaffManagement() {
       queryClient.invalidateQueries({ queryKey: ['staff'] });
       toast.success('Staff member deactivated');
     },
-    onError: (err: any) => {
-      toast.error(err.response?.data?.detail ?? 'Failed to deactivate');
+    onError: (err: unknown) => {
+      const apiErr = err as { response?: { data?: { detail?: string } } };
+      toast.error(apiErr.response?.data?.detail ?? 'Failed to deactivate');
     },
   });
 
