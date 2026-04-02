@@ -871,3 +871,14 @@ requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sa
 {"time":"2026-03-23 06:44:37,125","level":"WARNING","logger":"django.server","request_id":"3cf8bbac","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
 {"time":"2026-03-23 11:19:10,616","level":"WARNING","logger":"django.server","request_id":"2090c2fa","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
 {"time":"2026-03-23 11:19:20,407","level":"WARNING","logger":"django.server","request_id":"b49308ce","message":""POST /api/auth/token/ HTTP/1.1" 401 63"}
+{"time":"2026-03-23 21:49:34,407","level":"WARNING","logger":"django.server","request_id":"5555aa51","message":""GET /api/products/ HTTP/1.1" 401 172"}
+{"time":"2026-03-23 21:49:34,418","level":"WARNING","logger":"django.server","request_id":"6f7a03af","message":""GET /api/products/?sort=best_selling&limit=8 HTTP/1.1" 401 172"}
+{"time":"2026-03-23 21:49:34,712","level":"WARNING","logger":"django.server","request_id":"2c67898c","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-23 21:49:34,600","level":"WARNING","logger":"django.server","request_id":"671fe8a6","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-24 20:55:51,017","level":"WARNING","logger":"django.server","request_id":"623baa5c","message":""GET /health HTTP/1.1" 404 2747"}
+{"time":"2026-03-24 20:55:51,651","level":"WARNING","logger":"django.server","request_id":"3c9196e4","message":""POST /indicators HTTP/1.1" 404 2760"}
+{"time":"2026-03-25 10:44:37,869","level":"WARNING","logger":"django.server","request_id":"f9601163","message":""GET /api/products/?sort=best_selling&limit=8 HTTP/1.1" 401 172"}
+{"time":"2026-03-25 10:44:37,871","level":"WARNING","logger":"django.server","request_id":"b751a01c","message":""GET /api/products/ HTTP/1.1" 401 172"}
+{"time":"2026-03-25 10:44:37,872","level":"WARNING","logger":"django.server","request_id":"4baa28f8","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-25 10:44:37,892","level":"WARNING","logger":"django.server","request_id":"801e4bd9","message":""GET /api/auth/me/ HTTP/1.1" 401 172"}
+{"time":"2026-03-25 17:58:20,832","level":"WARNING","logger":"django.server","request_id":"93e4111e","message":""GET /health HTTP/1.1" 404 2747"}
