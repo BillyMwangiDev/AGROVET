@@ -110,7 +110,7 @@ def _commons_query_for(product: "Product") -> str:
 
 # ─── Fetch helpers ────────────────────────────────────────────────────────────
 
-_UA = "AgrovetPOS/1.0 (https://nicmahagrovet.co.ke; info@nicmahagrovet.co.ke)"
+_UA = "AgrovetPOS/1.0 (https://nicmah.co.ke; info@nicmah.co.ke)"
 
 
 def _ctx() -> ssl.SSLContext:

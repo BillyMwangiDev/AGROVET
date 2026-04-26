@@ -61,7 +61,7 @@ def draw_letterhead(canvas, doc):
     # Contact line 2
     canvas.drawString(text_x, ph - 22 * mm,
                       "Shop: 0726 476 128  |  Vet: 0721 908 023  |  "
-                      "nicmahagrovet@gmail.com  |  www.nicmahagrovet.co.ke")
+                      "nicmahagrovet@gmail.com  |  www.nicmah.co.ke")
 
     # Gold accent rule under header
     canvas.setStrokeColor(ACCENT)

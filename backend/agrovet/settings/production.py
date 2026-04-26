@@ -4,6 +4,22 @@ from .base import *
 
 DEBUG = False
 
+# WhiteNoise — serve static files directly via Passenger (no Apache alias needed)
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "agrovet.middleware.RequestIDMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_URL = "/static/"
+
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
 DATABASES = {
@@ -22,13 +38,14 @@ _cors = os.environ.get("CORS_ALLOWED_ORIGINS", "")
 if not _cors:
     raise ImproperlyConfigured(
         "CORS_ALLOWED_ORIGINS environment variable must be set in production. "
-        "Example: https://nicmahagrovet.co.ke,https://www.nicmahagrovet.co.ke"
+        "Example: https://nicmah.co.ke,https://www.nicmah.co.ke"
     )
 CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors.split(",") if o.strip()]
 CORS_ALLOW_CREDENTIALS = True
 
 # HTTPS enforcement (nginx terminates TLS and forwards X-Forwarded-Proto)
-SECURE_SSL_REDIRECT = True
+# Set SECURE_SSL_REDIRECT=True only after the SSL cert + nginx HTTPS block are active.
+SECURE_SSL_REDIRECT = os.environ.get("SECURE_SSL_REDIRECT", "False") == "True"
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # HSTS — tell browsers to only use HTTPS for 1 year

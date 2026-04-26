@@ -131,7 +131,7 @@ def generate_receipt_html(sale) -> str:
   <div class="footer">
     <p>Asante kwa kununua!</p>
     <p>Thank you for shopping with us.</p>
-    <p style="margin-top:6px; font-size:9px;">www.nicmahagrovet.co.ke</p>
+    <p style="margin-top:6px; font-size:9px;">www.nicmah.co.ke</p>
   </div>
 </body>
 </html>"""
